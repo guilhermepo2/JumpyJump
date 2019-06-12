@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Platform
-  - 
+  - OneWayPlatform
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2103332415
+    locked: 0
+  - name: Background Platformer
+    uniqueID: 1438890241
+    locked: 0
+  - name: Platformer
+    uniqueID: 935188467
+    locked: 0
+  - name: Player
+    uniqueID: 3375608193
     locked: 0

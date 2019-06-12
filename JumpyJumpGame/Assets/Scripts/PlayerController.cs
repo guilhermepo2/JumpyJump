@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour {
     private const string IDLE_ANIMATION = "Idle";
     private const string RUNNING_ANIMATION = "Running";
     private const string JUMPING_ANIMATION = "Jumping";
+    private Vector2 goingUpScaleMultiplier = new Vector2(0.6f, 1.4f);
+    private Vector2 goingDownScaleMultiplier = new Vector2(1.4f, 0.6f);
 
     // Player State
     public enum EPlayerState {
@@ -103,12 +105,14 @@ public class PlayerController : MonoBehaviour {
             m_wasGroundedTime = 0;
             m_gravity = m_goingUpGravity;
             m_playerVelocity.y = m_jumpInitialVelocity;
+            JuiceScale(goingUpScaleMultiplier);
             m_currentPlayerState = EPlayerState.Jumping;
         }
     }
 
     private void ProcessJumpingState() {
         if (m_actorReference.isGrounded) {
+            JuiceScale(goingDownScaleMultiplier);
             m_currentPlayerState = EPlayerState.Grounded;
         }
     }
@@ -133,5 +137,15 @@ public class PlayerController : MonoBehaviour {
         } else {
             m_playerSpriteAnimator.Play(IDLE_ANIMATION);
         }
+    }
+
+    private void JuiceScale(Vector2 scaleMultiplier) {
+        StartCoroutine(JuiceScaleRoutine(scaleMultiplier));
+    }
+
+    private IEnumerator JuiceScaleRoutine(Vector2 scaleMultiplier) {
+        m_playerSpriteTransform.localScale *= scaleMultiplier;
+        yield return new WaitForSeconds(0.048f);
+        m_playerSpriteTransform.localScale /= scaleMultiplier;
     }
 }
