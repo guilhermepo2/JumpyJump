@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float footSpeed = 5;
     public float groundDamping = 1f;
     public float airDamping = 1f;
+    public float jumpCutValue = 0.25f;
 
     // Handling Jump and Velocity
     private float m_jumpInitialVelocity;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     private const string IDLE_ANIMATION = "Idle";
     private const string RUNNING_ANIMATION = "Running";
     private const string JUMPING_ANIMATION = "Jumping";
+    private const string CHANGING_DIRECTION = "ChangingDirection";
     private Vector2 goingUpScaleMultiplier = new Vector2(0.6f, 1.4f);
     private Vector2 goingDownScaleMultiplier = new Vector2(1.4f, 0.6f);
 
@@ -111,6 +113,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ProcessJumpingState() {
+        if(Input.GetButtonUp("Jump") && m_playerVelocity.y > 0) {
+            m_playerVelocity.y *= jumpCutValue;
+        }
+
         if (m_actorReference.isGrounded) {
             JuiceScale(goingDownScaleMultiplier);
             m_currentPlayerState = EPlayerState.Grounded;
@@ -132,6 +138,8 @@ public class PlayerController : MonoBehaviour {
 
         if(!m_actorReference.isGrounded) {
             m_playerSpriteAnimator.Play(JUMPING_ANIMATION);
+        } else if(Mathf.Sign(m_playerVelocity.x) != Mathf.Sign(inputHorizontalSpeed) && inputHorizontalSpeed != 0) {
+            m_playerSpriteAnimator.Play(CHANGING_DIRECTION);
         } else if (Mathf.Abs(m_playerVelocity.x) > 0.5f) {
             m_playerSpriteAnimator.Play(RUNNING_ANIMATION);
         } else {

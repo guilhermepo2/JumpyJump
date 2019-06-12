@@ -1690,7 +1690,7 @@ MonoBehaviour:
   jumpPeakHeight: 2
   horizontalDistanceToPeak: 2
   footSpeed: 5
-  groundDamping: 1.5
+  groundDamping: 2
   airDamping: 1
 --- !u!1 &2009713563
 GameObject:
