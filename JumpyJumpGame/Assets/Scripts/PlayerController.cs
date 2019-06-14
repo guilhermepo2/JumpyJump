@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    [Header("Jumping Parameters")]
     public float jumpPeakHeight = 2;
     public float horizontalDistanceToPeak = 2;
     public float footSpeed = 5;
     public float groundDamping = 1f;
     public float airDamping = 1f;
     public float jumpCutValue = 0.25f;
+
+    [Header("Sound Effects")]
+    public AudioClip jumpingClip;
+    private SoundManager m_soundManagerReference;
 
     // Handling Jump and Velocity
     private float m_jumpInitialVelocity;
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour {
     private EPlayerState m_currentPlayerState;
 
     void Awake() {
+        m_soundManagerReference = FindObjectOfType<SoundManager>();
         m_actorReference = GetComponent<Actor>();
         m_playerSpriteTransform = GetComponentInChildren<SpriteRenderer>().transform;
         m_playerSpriteAnimator = GetComponentInChildren<Animator>();
@@ -109,6 +115,11 @@ public class PlayerController : MonoBehaviour {
             m_playerVelocity.y = m_jumpInitialVelocity;
             JuiceScale(goingUpScaleMultiplier);
             m_currentPlayerState = EPlayerState.Jumping;
+
+            // Playing Audio Clip
+            if(m_soundManagerReference) {
+                m_soundManagerReference.PlayEffect(jumpingClip);
+            }
         }
     }
 
