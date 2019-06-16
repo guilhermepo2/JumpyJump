@@ -8,13 +8,19 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
 
     private SoundManager m_soundManager;
     private SpriteRenderer m_spriteRenderer;
+    private bool m_isActivated;
 
     void Start() {
+        m_isActivated = false;
         m_soundManager = FindObjectOfType<SoundManager>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void CollidedWithPlayer() {
+        if(m_isActivated) {
+            return;
+        }
+
         if(m_soundManager && coinSound) {
             m_soundManager.PlayEffect(coinSound);
         }
@@ -22,5 +28,7 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
         if(collidedSprite) {
             m_spriteRenderer.sprite = collidedSprite;
         }
+
+        m_isActivated = true;
     }
 }

@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour {
     public AudioClip jumpingClip;
     private SoundManager m_soundManagerReference;
 
+    [Header("Particles")]
+    public ParticleSystem footParticles;
+    private bool m_ChangedDirectionThisFrame;
+
     // Handling Jump and Velocity
     private float m_jumpInitialVelocity;
     private float m_gravity;
@@ -132,6 +136,8 @@ public class PlayerController : MonoBehaviour {
             if(m_soundManagerReference) {
                 m_soundManagerReference.PlayEffect(jumpingClip);
             }
+
+            PlayFootParticle();
         }
     }
 
@@ -141,6 +147,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (m_actorReference.isGrounded) {
+            PlayFootParticle();
             JuiceScale(goingDownScaleMultiplier);
             m_currentPlayerState = EPlayerState.Grounded;
         }
@@ -163,6 +170,7 @@ public class PlayerController : MonoBehaviour {
             m_playerSpriteAnimator.Play(JUMPING_ANIMATION);
         } else if(Mathf.Sign(m_playerVelocity.x) != Mathf.Sign(inputHorizontalSpeed) && inputHorizontalSpeed != 0) {
             m_playerSpriteAnimator.Play(CHANGING_DIRECTION);
+            PlayFootParticle();
         } else if (Mathf.Abs(m_playerVelocity.x) > 0.5f) {
             m_playerSpriteAnimator.Play(RUNNING_ANIMATION);
         } else {
@@ -178,5 +186,12 @@ public class PlayerController : MonoBehaviour {
         m_playerSpriteTransform.localScale *= scaleMultiplier;
         yield return new WaitForSeconds(0.048f);
         m_playerSpriteTransform.localScale /= scaleMultiplier;
+    }
+
+    private void PlayFootParticle() {
+        if(footParticles) {
+            ParticleSystem particles = Instantiate(footParticles, transform.position + (Vector3.down / 2), Quaternion.identity);
+            particles.Play();
+        }
     }
 }

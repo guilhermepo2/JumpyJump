@@ -2622,7 +2622,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842417229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.18, y: -0.74, z: 0}
+  m_LocalPosition: {x: -8.89, y: -4.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1160039697}
@@ -2716,6 +2716,8 @@ MonoBehaviour:
   airDamping: 1
   jumpCutValue: 0.25
   jumpingClip: {fileID: 8300000, guid: 530c6345d1975584198f563abfa41fa1, type: 3}
+  footParticles: {fileID: 5840198629545133983, guid: 90cda53cd2670c645b8b982028243132,
+    type: 3}
 --- !u!1 &1997650456
 GameObject:
   m_ObjectHideFlags: 0
