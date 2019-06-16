@@ -48,6 +48,16 @@ public class PlayerController : MonoBehaviour {
     }
     private EPlayerState m_currentPlayerState;
 
+    void OnControllerCollider(RaycastHit2D hit) {
+        ICollideWithPlayer collideWithPlayer = hit.transform.GetComponent<ICollideWithPlayer>();
+
+        if(hit.normal.y == -1.0f) {
+            if(collideWithPlayer != null) {
+                collideWithPlayer.CollidedWithPlayer();
+            }
+        }
+    }
+
     void Awake() {
         m_soundManagerReference = FindObjectOfType<SoundManager>();
         m_actorReference = GetComponent<Actor>();
@@ -64,6 +74,8 @@ public class PlayerController : MonoBehaviour {
         m_gravity = m_goingDownGravity;
         inputHorizontalSpeed = 0;
         m_currentPlayerState = EPlayerState.Grounded;
+
+        m_actorReference.OnControllerCollidedEvent += OnControllerCollider;
     }
 
     // Update is called once per frame
