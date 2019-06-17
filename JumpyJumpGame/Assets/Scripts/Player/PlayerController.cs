@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour {
         float smoothedMovementFactor = m_actorReference.isGrounded ? groundDamping : airDamping;
         float xVelocityLerp = Mathf.Clamp01(Time.deltaTime * smoothedMovementFactor);
         m_playerVelocity.x = Mathf.Lerp(m_playerVelocity.x, inputHorizontalSpeed * footSpeed, xVelocityLerp);
+        m_playerVelocity.y += m_gravity * Time.deltaTime;
 
         Vector3 eulerDeltaMovement = m_playerVelocity * Time.deltaTime;
         Vector3 velocityVerletDeltaMovement = new Vector3(eulerDeltaMovement.x, eulerDeltaMovement.y + (0.5f * m_gravity * Time.deltaTime * Time.deltaTime), 0f);
