@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6789278350195643336}
   - component: {fileID: 5703911532231379617}
   - component: {fileID: 2075428749389005425}
-  - component: {fileID: 2075428749389005424}
   - component: {fileID: 7275003076436988976}
   m_Layer: 8
   m_Name: QuestionBox
@@ -97,18 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collidedSprite: {fileID: 21300000, guid: c84dd8b9b4883ec43a45d77a392d07dd, type: 3}
   coinSound: {fileID: 8300000, guid: 18ff68ae08fff1f429b7f96a633e5c01, type: 3}
---- !u!114 &2075428749389005424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2075428749389005423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c0c05a42a549d4e84523ed6bff527f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &7275003076436988976
 BoxCollider2D:
   m_ObjectHideFlags: 0
