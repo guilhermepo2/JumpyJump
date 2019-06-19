@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,6 +53,9 @@ public class PlayerController : MonoBehaviour {
     }
     private EPlayerState m_currentPlayerState;
 
+    // Events
+    public event Action PlayerDeath; 
+
     void OnControllerCollider(RaycastHit2D hit) {
         ICollideWithPlayer collideWithPlayer = hit.transform.GetComponent<ICollideWithPlayer>();
 
@@ -59,6 +63,15 @@ public class PlayerController : MonoBehaviour {
             if(collideWithPlayer != null) {
                 collideWithPlayer.CollidedWithPlayer();
             }
+        }
+    }
+
+    void HandleTriggerEnter(Collider2D other) {
+        IDangerousInteraction dangerousInteraction = other.GetComponent<IDangerousInteraction>();
+
+        if(dangerousInteraction != null) {
+            dangerousInteraction.Interact();
+            OnPlayerDeath();
         }
     }
 
@@ -80,6 +93,7 @@ public class PlayerController : MonoBehaviour {
         m_currentPlayerState = EPlayerState.Grounded;
 
         m_actorReference.OnControllerCollidedEvent += OnControllerCollider;
+        m_actorReference.OnTriggerEnterEvent += HandleTriggerEnter;
     }
 
     // Update is called once per frame
@@ -194,5 +208,9 @@ public class PlayerController : MonoBehaviour {
             ParticleSystem particles = Instantiate(footParticles, transform.position + (Vector3.down / 2), Quaternion.identity);
             particles.Play();
         }
+    }
+
+    public void OnPlayerDeath() {
+        PlayerDeath?.Invoke();
     }
 }
