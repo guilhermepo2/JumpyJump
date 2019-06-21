@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float groundDamping = 1f;
     public float airDamping = 1f;
     public float jumpCutValue = 0.25f;
+    public float goingDownGravityMultiplier = 2f;
 
     [Header("Sound Effects")]
     public AudioClip jumpingClip;
@@ -19,7 +20,6 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Particles")]
     public ParticleSystem footParticles;
-    private bool m_ChangedDirectionThisFrame;
 
     // Handling Jump and Velocity
     private float m_jumpInitialVelocity;
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour {
         Grounded,
         Jumping,
     }
+
     private EPlayerState m_currentPlayerState;
 
     // Events
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 
         // g = (-2 * jump_height) / (jump_time^2)
         m_goingUpGravity = -((2 * jumpPeakHeight * footSpeed * footSpeed) / (horizontalDistanceToPeak * horizontalDistanceToPeak));
-        m_goingDownGravity = m_goingUpGravity * 3f;
+        m_goingDownGravity = m_goingUpGravity * goingDownGravityMultiplier;
         m_gravity = m_goingDownGravity;
         inputHorizontalSpeed = 0;
         m_currentPlayerState = EPlayerState.Grounded;
@@ -100,6 +101,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         m_pressedJumpTime -= Time.deltaTime;
         m_wasGroundedTime -= Time.deltaTime;
+
         inputHorizontalSpeed = Input.GetAxisRaw("Horizontal");
 
         if(Input.GetButtonDown("Jump")) {
@@ -194,7 +196,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void JuiceScale(Vector2 scaleMultiplier) {
-        StartCoroutine(JuiceScaleRoutine(scaleMultiplier));
+        // StartCoroutine(JuiceScaleRoutine(scaleMultiplier));
     }
 
     private IEnumerator JuiceScaleRoutine(Vector2 scaleMultiplier) {

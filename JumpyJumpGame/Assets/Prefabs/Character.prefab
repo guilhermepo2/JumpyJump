@@ -99,7 +99,7 @@ MonoBehaviour:
     m_Bits: 256
   triggerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   oneWayPlatformMask:
     serializedVersion: 2
     m_Bits: 512
@@ -116,11 +116,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPeakHeight: 6.5
-  horizontalDistanceToPeak: 6
+  horizontalDistanceToPeak: 4.25
   footSpeed: 5
   groundDamping: 2
   airDamping: 1
-  jumpCutValue: 0.25
+  jumpCutValue: 0.5
+  goingDownGravityMultiplier: 2
   jumpingClip: {fileID: 8300000, guid: 530c6345d1975584198f563abfa41fa1, type: 3}
   footParticles: {fileID: 5840198629545133983, guid: 90cda53cd2670c645b8b982028243132,
     type: 3}

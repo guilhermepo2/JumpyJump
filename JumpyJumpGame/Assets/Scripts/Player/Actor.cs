@@ -62,7 +62,6 @@ public class Actor : MonoBehaviour {
     protected Vector3 m_velocity;
     private const float km_SkinWidthFloatFudgeFactor = 0.001f;
 
-
     protected ActorRaycastOrigins m_raycastOrigins;
     private RaycastHit2D m_raycastHit;
     List<RaycastHit2D> m_raycastHitsThisFrame = new List<RaycastHit2D>(2);
