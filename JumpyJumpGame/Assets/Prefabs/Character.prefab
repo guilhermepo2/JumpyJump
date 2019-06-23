@@ -115,13 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953794c4b74d26445a6e2f447b298ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPeakHeight: 6.5
-  horizontalDistanceToPeak: 4.25
-  footSpeed: 5
+  jumpPeakHeight: 4.75
+  horizontalDistanceToPeak: 3.125
+  footSpeed: 6
   groundDamping: 2
   airDamping: 1
   jumpCutValue: 0.5
-  goingDownGravityMultiplier: 2
+  goingDownGravityMultiplier: 1.5
   jumpingClip: {fileID: 8300000, guid: 530c6345d1975584198f563abfa41fa1, type: 3}
   footParticles: {fileID: 5840198629545133983, guid: 90cda53cd2670c645b8b982028243132,
     type: 3}

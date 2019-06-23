@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 eulerDeltaMovement = m_playerVelocity * Time.deltaTime;
         Vector3 velocityVerletDeltaMovement = new Vector3(eulerDeltaMovement.x, eulerDeltaMovement.y + (0.5f * m_gravity * Time.deltaTime * Time.deltaTime), 0f);
-        m_playerVelocity = m_actorReference.Move(velocityVerletDeltaMovement);
+        m_playerVelocity = m_actorReference.Move(eulerDeltaMovement);
     }
 
     private void ProcessGroundedState() {
