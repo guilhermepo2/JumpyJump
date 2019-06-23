@@ -10075,8 +10075,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 100, y: 10}
-      - {x: -2, y: 10}
+    - - {x: 100, y: 8}
+      - {x: -2, y: 8}
       - {x: -2, y: -7}
       - {x: 100, y: -7}
 --- !u!4 &1613298314
@@ -13441,12 +13441,12 @@ PrefabInstance:
     - target: {fileID: 8259565886654297013, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1570644
+      value: -0.33590794
       objectReference: {fileID: 0}
     - target: {fileID: 8259565886654297013, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2113514
+      value: 0.7113509
       objectReference: {fileID: 0}
     - target: {fileID: 8259565886654297013, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
@@ -13508,10 +13508,5 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 1613298313}
-    - target: {fileID: 8259565885963754456, guid: 9052e22d2203dab41856332aafa17f83,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9052e22d2203dab41856332aafa17f83, type: 3}
