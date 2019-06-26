@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953794c4b74d26445a6e2f447b298ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPeakHeight: 4.75
-  horizontalDistanceToPeak: 3.125
+  jumpPeakHeight: 4.45
+  horizontalDistanceToPeak: 2.75
   footSpeed: 6
   groundDamping: 2
   airDamping: 1
