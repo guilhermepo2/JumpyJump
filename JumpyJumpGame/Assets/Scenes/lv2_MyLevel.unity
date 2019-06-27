@@ -17146,7 +17146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1097086941
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19012,7 +19012,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19676,7 +19676,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19696,7 +19696,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -28977,7 +28977,7 @@ PrefabInstance:
     - target: {fileID: 8259565886654297013, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3279934
+      value: -2.3229733
       objectReference: {fileID: 0}
     - target: {fileID: 8259565886654297013, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
@@ -29047,7 +29047,7 @@ PrefabInstance:
     - target: {fileID: 8259565885963754456, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.072006
+      value: -12.077026
       objectReference: {fileID: 0}
     - target: {fileID: 8259565885963754456, guid: 9052e22d2203dab41856332aafa17f83,
         type: 3}

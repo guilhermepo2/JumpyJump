@@ -182,25 +182,19 @@ public class Actor : MonoBehaviour {
         Vector2 rayDirection = isGoingRight ? Vector2.right : Vector2.left;
         Vector2 initialRayOrigin = isGoingRight ? m_raycastOrigins.bottomRight : m_raycastOrigins.bottomLeft;
 
-        // hacking for 3D
-        RaycastHit newRaycastHit;
-        bool hadRaycastHit;
-
         for (int i = 0; i < totalHorizontalRays; i++) {
             Vector2 ray = new Vector2(initialRayOrigin.x, initialRayOrigin.y + i * m_verticalDistanceBetweenRays);
             DrawRay(ray, rayDirection * rayDistance, Color.red);
 
             // if we are grounded we will include oneWayPlatforms only on the first ray (the bottom one)
             if (i == 0 && collisionState.wasGroundedLastFrame) {
-                hadRaycastHit = Physics.Raycast(ray, rayDirection, out newRaycastHit, rayDistance, platformMask);
                 m_raycastHit = Physics2D.Raycast(ray, rayDirection, rayDistance, platformMask);
             } else {
-                hadRaycastHit = Physics.Raycast(ray, rayDirection, out newRaycastHit, rayDistance, platformMask & ~oneWayPlatformMask);
                 m_raycastHit = Physics2D.Raycast(ray, rayDirection, rayDistance, platformMask & ~oneWayPlatformMask);
             }
 
-            if (hadRaycastHit) {
-                deltaMovement.x = newRaycastHit.point.x - ray.x;
+            if(m_raycastHit) {
+                deltaMovement.x = m_raycastHit.point.x - ray.x;
                 rayDistance = Mathf.Abs(deltaMovement.x);
 
                 if (isGoingRight) {
@@ -242,14 +236,10 @@ public class Actor : MonoBehaviour {
             var ray = new Vector2(initialRayOrigin.x + i * m_horizontalDistanceBetweenRays, initialRayOrigin.y);
 
             DrawRay(ray, rayDirection * rayDistance, Color.red);
-
-            RaycastHit mewRaycastInfo;
-            bool hitRaycast = Physics.Raycast(ray, rayDirection, out mewRaycastInfo, rayDistance, mask);
-
             m_raycastHit = Physics2D.Raycast(ray, rayDirection, rayDistance, mask);
 
-            if (hitRaycast) {
-                deltaMovement.y = mewRaycastInfo.point.y - ray.y;
+            if(m_raycastHit) {
+                deltaMovement.y = m_raycastHit.point.y - ray.y;
                 rayDistance = Mathf.Abs(deltaMovement.y);
 
                 // remember to remove the skinWidth from our deltaMovement
