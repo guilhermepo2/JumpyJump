@@ -13,7 +13,7 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
     void Start() {
         m_isActivated = false;
         m_soundManager = FindObjectOfType<SoundManager>();
-        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void CollidedWithPlayer() {
@@ -21,14 +21,45 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
             return;
         }
 
-        if(m_soundManager && coinSound) {
+        JuiceBox();
+
+        m_isActivated = true;
+    }
+
+    private void JuiceBox() {
+        if (m_soundManager && coinSound) {
             m_soundManager.PlayEffect(coinSound);
         }
 
-        if(collidedSprite) {
+        if (collidedSprite) {
             m_spriteRenderer.sprite = collidedSprite;
         }
 
-        m_isActivated = true;
+        StartCoroutine(GoUpAndDownRoutine());
+    }
+
+    private IEnumerator GoUpAndDownRoutine() {
+        Transform spriteTransform = m_spriteRenderer.transform;
+        float timeToGoUp = 0.1f;
+        float amountToGoUp = 0.5f;
+        Vector3 originalPosition = spriteTransform.position;
+        Vector3 destination = originalPosition;
+        destination.y += amountToGoUp;
+
+        // go up
+        for (float i = 0; i < timeToGoUp; i += Time.deltaTime) {
+            float t = (i / timeToGoUp);
+            spriteTransform.position = Vector3.Lerp(originalPosition, destination, t);
+            yield return null;
+        }
+
+        // go down
+        for(float i = 0; i < timeToGoUp; i += Time.deltaTime) {
+            float t = (i / timeToGoUp);
+            spriteTransform.position = Vector3.Lerp(destination, originalPosition, t);
+            yield return null;
+        }
+
+        spriteTransform.position = originalPosition;
     }
 }
