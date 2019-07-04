@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour {
     void HandleTriggerEnter(Collider2D other) {
         IDangerousInteraction dangerousInteraction = other.GetComponent<IDangerousInteraction>();
         IEnemy enemyCollision = other.GetComponent<IEnemy>();
+        IInteraction interactionWithTrigger = other.GetComponent<IInteraction>();
 
         if(enemyCollision != null) {
             Vector2 positionDifference = transform.position - other.transform.position;
@@ -82,13 +83,15 @@ public class PlayerController : MonoBehaviour {
             } else {
                 OnPlayerDeath();
             }
-
-            
         }
 
         if(dangerousInteraction != null) {
             dangerousInteraction.Interact();
             OnPlayerDeath();
+        }
+
+        if(interactionWithTrigger != null) {
+            interactionWithTrigger.Interact();
         }
     }
 
