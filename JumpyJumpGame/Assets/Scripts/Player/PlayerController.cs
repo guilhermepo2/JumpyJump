@@ -69,6 +69,22 @@ public class PlayerController : MonoBehaviour {
 
     void HandleTriggerEnter(Collider2D other) {
         IDangerousInteraction dangerousInteraction = other.GetComponent<IDangerousInteraction>();
+        IEnemy enemyCollision = other.GetComponent<IEnemy>();
+
+        if(enemyCollision != null) {
+            Vector2 positionDifference = transform.position - other.transform.position;
+
+            // checking if we kill or die
+            if(positionDifference.y >= 0.25f) {
+                enemyCollision.Kill();
+                m_gravity = m_goingUpGravity;
+                m_playerVelocity.y = m_jumpInitialVelocity * 0.5f;
+            } else {
+                OnPlayerDeath();
+            }
+
+            
+        }
 
         if(dangerousInteraction != null) {
             dangerousInteraction.Interact();
@@ -132,6 +148,13 @@ public class PlayerController : MonoBehaviour {
 
         float smoothedMovementFactor = m_actorReference.isGrounded ? groundDamping : airDamping;
         float xVelocityLerp = Mathf.Clamp01(Time.deltaTime * smoothedMovementFactor);
+
+        // force removing any momentum when there is no input
+        if(inputHorizontalSpeed == 0) {
+            xVelocityLerp *= 3.5f;
+        }
+
+
         m_playerVelocity.x = Mathf.Lerp(m_playerVelocity.x, inputHorizontalSpeed * footSpeed, xVelocityLerp);
         m_playerVelocity.y += m_gravity * Time.deltaTime;
 

@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: aa017e6e296141f4f8ef43a881688fa1
+guid: 788907750b83eb3429e4f2bd2acac9f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4011209850602338325
-    second: l_01_platform_0
+      213: -3605285236067844410
+    second: Goomba_0
   - first:
-      213: -2257385049624686011
-    second: l_01_platform_1
-  - first:
-      213: 6878829551608847200
-    second: l_01_platform_2
-  - first:
-      213: -89760477310963215
-    second: l_01_platform_3
-  - first:
-      213: 1272997524837891749
-    second: l_01_platform_4
-  - first:
-      213: -9135035382796231716
-    second: l_01_platform_5
+      213: 7950366051213280161
+    second: Goomba_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,70 +92,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: l_01_platform_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3df079d7ca25e646b40f89092a8dbb1
-      internalID: -4011209850602338325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: l_01_platform_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb2506f8390c95947bee40d5e95d6382
-      internalID: -2257385049624686011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: l_01_platform_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aee2a87f924459f4a98f552973cbb16e
-      internalID: 6878829551608847200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: l_01_platform_3
+      name: Goomba_0
       rect:
         serializedVersion: 2
         x: 0
@@ -181,14 +106,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc94e1589fb40c34d9b1915e8ca3fa86
-      internalID: -89760477310963215
+      spriteID: cf4d92dd1e5ad0849a63543c299a0952
+      internalID: -3605285236067844410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: l_01_platform_4
+      name: Goomba_1
       rect:
         serializedVersion: 2
         x: 16
@@ -202,29 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b2b9cbd8012b434a8a780e4ff94b00c
-      internalID: 1272997524837891749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: l_01_platform_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52dadc92f890e0540b16bae303c906d1
-      internalID: -9135035382796231716
+      spriteID: e3d810a939adc914785f0e0e3ad8313c
+      internalID: 7950366051213280161
       vertices: []
       indices: 
       edges: []
