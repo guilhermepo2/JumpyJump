@@ -8,12 +8,14 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
 
     private SoundManager m_soundManager;
     private SpriteRenderer m_spriteRenderer;
+    private Animator m_spriteAnimator;
     private bool m_isActivated;
 
     void Start() {
         m_isActivated = false;
         m_soundManager = FindObjectOfType<SoundManager>();
         m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        m_spriteAnimator = GetComponentInChildren<Animator>();
     }
 
     public void CollidedWithPlayer() {
@@ -33,6 +35,7 @@ public class QuestionBox : MonoBehaviour, ICollideWithPlayer {
 
         if (collidedSprite) {
             m_spriteRenderer.sprite = collidedSprite;
+            m_spriteAnimator.Play("QuestionBoxDead");
         }
 
         StartCoroutine(GoUpAndDownRoutine());
